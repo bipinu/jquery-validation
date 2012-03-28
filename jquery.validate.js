@@ -219,6 +219,7 @@ $.extend($.validator, {
 		errorContainer: $( [] ),
 		errorLabelContainer: $( [] ),
 		onsubmit: true,
+		ignore: [],
 		ignoreTitle: false,
 		onfocusin: function(element, event) {
 			this.lastActive = element;
@@ -1072,6 +1073,8 @@ $.extend($.validator, {
 
 		// http://docs.jquery.com/Plugins/Validation/Methods/date
 		date: function(value, element) {
+			// return this.optional(element) || !/Invalid|NaN/.test(new Date(value));
+			return this.optional(element) || /^(0?[1-9]|[12][0-9]|3[01])[- /.](0?[1-9]|1[012])[- /.](19|20)\d\d$/.test(value);
 		},
 
 		// http://docs.jquery.com/Plugins/Validation/Methods/dateISO
